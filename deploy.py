@@ -19,7 +19,7 @@ for m in map:
     }
     es.indices.put_mapping(index='demonette', doc_type='relation', body=d_map)
 
-for l in db_csv[1:10]:
+for l in db_csv:
     if l:
         d_dict = {}
         l_l = l.split(',')
