@@ -28,26 +28,15 @@ es.indices.open(index='demonette')
 cpt = 0
 
 for m in map:
-    if re.match('type_[0-9]', m):
-        d_map = {
-            "properties": {
-                m.replace('\n', ''): {
-                    "type": "text",
-                    "fielddata": "true",
-                    "analyzer": "custom_analyzer"
-                }
+    d_map = {
+        "properties": {
+            m.replace('\n', ''): {
+                "type": "text",
+                "fielddata": "true",
+                "analyzer": "custom_analyzer"
             }
         }
-    else:
-        d_map = {
-                "properties": {
-                    m.replace('\n', ''): {
-                        "type": "text",
-                        "fielddata": "true",
-                        "analyzer": "custom_analyzer"
-                }
-            }
-        }
+    }
     es.indices.put_mapping(index='demonette', doc_type='relation', body=d_map)
 
 for l in db_csv:
